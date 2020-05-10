@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SipminiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Exam2">
+          <Key>
+            <PropertyRef Name="Exam ID" />
+          </Key>
+          <Property Name="Exam ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nchar" MaxLength="10" />
+          <Property Name="Grade" Type="nchar" MaxLength="10" />
+          <Property Name="TeacherName" Type="nchar" MaxLength="10" />
+          <Property Name="FilePath" Type="nvarchar(max)" />
+          <Property Name="FileName" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="grade">
+          <Key>
+            <PropertyRef Name="grade_id" />
+          </Key>
+          <Property Name="grade_id" Type="int" Nullable="false" />
+          <Property Name="grade" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="subject">
+          <Key>
+            <PropertyRef Name="subject_id" />
+          </Key>
+          <Property Name="subject_id" Type="int" Nullable="false" />
+          <Property Name="subject" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teacher">
+          <Key>
+            <PropertyRef Name="teacher_id" />
+          </Key>
+          <Property Name="teacher_id" Type="int" Nullable="false" />
+          <Property Name="teacher_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teacher_grade">
+          <Key>
+            <PropertyRef Name="grade_id" />
+            <PropertyRef Name="teacher_id" />
+          </Key>
+          <Property Name="grade_id" Type="int" Nullable="false" />
+          <Property Name="teacher_id" Type="int" Nullable="false" />
+          <Property Name="grade" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teacher_subject">
+          <Key>
+            <PropertyRef Name="subject_id" />
+            <PropertyRef Name="teacher_id" />
+          </Key>
+          <Property Name="subject_id" Type="int" Nullable="false" />
+          <Property Name="teacher_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="upload_file">
+          <Key>
+            <PropertyRef Name="file_id" />
+          </Key>
+          <Property Name="file_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="file_name" Type="nchar" MaxLength="200" Nullable="false" />
+          <Property Name="upload_date" Type="datetime" Nullable="false" />
+          <Property Name="file_path" Type="varchar(max)" Nullable="false" />
+          <Property Name="subject" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="grade" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="upload_file_teacher">
+          <Key>
+            <PropertyRef Name="file_id" />
+          </Key>
+          <Property Name="file_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="teacher_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SipminiModelStoreContainer">
+          <EntitySet Name="Exam2" EntityType="Self.Exam2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grade" EntityType="Self.grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subject" EntityType="Self.subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teacher" EntityType="Self.teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teacher_grade" EntityType="Self.teacher_grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teacher_subject" EntityType="Self.teacher_subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="upload_file" EntityType="Self.upload_file" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="upload_file_teacher" EntityType="Self.upload_file_teacher" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SipminiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Exam2">
+          <Key>
+            <PropertyRef Name="Exam_ID" />
+          </Key>
+          <Property Name="Exam_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TeacherName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="grade">
+          <Key>
+            <PropertyRef Name="grade_id" />
+          </Key>
+          <Property Name="grade_id" Type="Int32" Nullable="false" />
+          <Property Name="grade1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="subject">
+          <Key>
+            <PropertyRef Name="subject_id" />
+          </Key>
+          <Property Name="subject_id" Type="Int32" Nullable="false" />
+          <Property Name="subject1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teacher">
+          <Key>
+            <PropertyRef Name="teacher_id" />
+          </Key>
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="teacher_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teacher_grade">
+          <Key>
+            <PropertyRef Name="grade_id" />
+            <PropertyRef Name="teacher_id" />
+          </Key>
+          <Property Name="grade_id" Type="Int32" Nullable="false" />
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="grade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teacher_subject">
+          <Key>
+            <PropertyRef Name="subject_id" />
+            <PropertyRef Name="teacher_id" />
+          </Key>
+          <Property Name="subject_id" Type="Int32" Nullable="false" />
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="upload_file">
+          <Key>
+            <PropertyRef Name="file_id" />
+          </Key>
+          <Property Name="file_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="file_name" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="upload_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="file_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subject" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="grade" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="upload_file_teacher">
+          <Key>
+            <PropertyRef Name="file_id" />
+          </Key>
+          <Property Name="file_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SipminiEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Exam2" EntityType="Self.Exam2" />
+          <EntitySet Name="grades" EntityType="Self.grade" />
+          <EntitySet Name="subjects" EntityType="Self.subject" />
+          <EntitySet Name="teachers" EntityType="Self.teacher" />
+          <EntitySet Name="teacher_grade" EntityType="Self.teacher_grade" />
+          <EntitySet Name="teacher_subject" EntityType="Self.teacher_subject" />
+          <EntitySet Name="upload_file" EntityType="Self.upload_file" />
+          <EntitySet Name="upload_file_teacher" EntityType="Self.upload_file_teacher" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SipminiModelStoreContainer" CdmEntityContainer="SipminiEntities2">
+          <EntitySetMapping Name="Exam2">
+            <EntityTypeMapping TypeName="SipminiModel.Exam2">
+              <MappingFragment StoreEntitySet="Exam2">
+                <ScalarProperty Name="Exam_ID" ColumnName="Exam ID" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grades">
+            <EntityTypeMapping TypeName="SipminiModel.grade">
+              <MappingFragment StoreEntitySet="grade">
+                <ScalarProperty Name="grade_id" ColumnName="grade_id" />
+                <ScalarProperty Name="grade1" ColumnName="grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subjects">
+            <EntityTypeMapping TypeName="SipminiModel.subject">
+              <MappingFragment StoreEntitySet="subject">
+                <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+                <ScalarProperty Name="subject1" ColumnName="subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teachers">
+            <EntityTypeMapping TypeName="SipminiModel.teacher">
+              <MappingFragment StoreEntitySet="teacher">
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="teacher_name" ColumnName="teacher_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teacher_grade">
+            <EntityTypeMapping TypeName="SipminiModel.teacher_grade">
+              <MappingFragment StoreEntitySet="teacher_grade">
+                <ScalarProperty Name="grade_id" ColumnName="grade_id" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teacher_subject">
+            <EntityTypeMapping TypeName="SipminiModel.teacher_subject">
+              <MappingFragment StoreEntitySet="teacher_subject">
+                <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="upload_file">
+            <EntityTypeMapping TypeName="SipminiModel.upload_file">
+              <MappingFragment StoreEntitySet="upload_file">
+                <ScalarProperty Name="file_id" ColumnName="file_id" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="upload_date" ColumnName="upload_date" />
+                <ScalarProperty Name="file_path" ColumnName="file_path" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="upload_file_teacher">
+            <EntityTypeMapping TypeName="SipminiModel.upload_file_teacher">
+              <MappingFragment StoreEntitySet="upload_file_teacher">
+                <ScalarProperty Name="file_id" ColumnName="file_id" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
